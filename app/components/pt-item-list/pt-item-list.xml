@@ -1,0 +1,27 @@
+<StackLayout loaded="onLoaded">
+
+    <ListView class="items-list" items="{{ ptItems }}" itemTap="{{ listItemTap }}" separatorColor="#97a879" >
+        <ListView.itemTemplate>
+            <GridLayout class="li-wrapper" rows="60" columns="10, 50,  *, 100">
+                <StackLayout class="li-indicator" row="0" col="0">
+                    <Label [class]="getIndicatorClass(item)"></Label>
+                </StackLayout>
+
+                <GridLayout col="1" class="li-avatar">
+                    <Image src="{{ assignee.avatar }}" stretch="aspectFit"></Image>
+                </GridLayout>
+
+                <StackLayout class="li-info-wrapper" col="2">
+                    <Label class="li-title" textWrap="true" text="{{ title }}"></Label>
+                    <Label class="li-estimate" text='{{ "estimate: " + estimate }}'></Label>
+                </StackLayout>
+
+                <StackLayout col="3">
+                    <Label text="{{ dateCreated }}" class="li-date"></Label>
+                </StackLayout>
+
+            </GridLayout>
+        </ListView.itemTemplate>
+    </ListView>
+
+</StackLayout>

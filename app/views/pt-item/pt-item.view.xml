@@ -1,0 +1,31 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+xmlns:pt-item-tasks="components/pt-item-tasks"
+navigatingTo="navigatingTo" loaded="onLoaded">
+
+    <ActionBar title="Item">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="{{ onNavBackTap }}"></NavigationButton>
+
+        <ActionItem tap="{{ onDelete }}" ios.systemIcon="16" ios.position="right" text="delete" android.systemIcon="ic_menu_delete"
+            android.position="actionBar"></ActionItem>
+
+    </ActionBar>
+
+    <StackLayout class="pt-item-container">
+
+        <StackLayout class="pt-item-detail-header">
+            <Label text="{{ itemTitle }}" class="pt-item-detail-header-title"></Label>
+
+            <SegmentedBar selectedBackgroundColor="#b6cb93" items="{{ myNavItems }}" selectedIndex="{{ selectedItemDetailScreenIndex }}"></SegmentedBar>
+        </StackLayout>
+
+        <Label text="detaqils" visibility="{{ selectedItemDetailScreenIndex === 0 ? 'visible' : 'collapsed' }}"></Label>
+
+        <StackLayout visibility="{{ selectedItemDetailScreenIndex === 1 ? 'visible' : 'collapsed' }}">
+            <pt-item-tasks:pt-item-tasks itemId="{{ itemId }}" />
+        </StackLayout>
+
+        <Label text="chitchat" visibility="{{ selectedItemDetailScreenIndex === 2 ? 'visible' : 'collapsed' }}"></Label>
+
+    </StackLayout>
+
+</Page>

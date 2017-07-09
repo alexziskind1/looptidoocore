@@ -1,0 +1,55 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"  xmlns:nsDrawer="nativescript-telerik-ui/sidedrawer"
+xmlns:pt-item-list="components/pt-item-list"
+navigatingTo="navigatingTo" loaded="onLoaded">
+
+    <ActionBar title="Backlog">
+        <ActionItem tap="{{ showSlideout }}" ios.position="right">
+            <StackLayout class="navbar_image_wrapper" ios:horizontalAlignment="right">
+                <Image src="res://icon_elipses_black"></Image>
+            </StackLayout>
+        </ActionItem>
+    </ActionBar>
+
+    <nsDrawer:RadSideDrawer id="drawer" showOverNavigation="true">
+
+        <nsDrawer:RadSideDrawer.drawerContent>
+            <StackLayout>
+                <GridLayout class="side-drawer-panel" rows="auto, *, 100">
+                    <StackLayout row="0">
+                        <Image src="res://rps_logo" class="slide-out-img" stretch="aspectFit"></Image>
+                    </StackLayout>
+                    <StackLayout row="1">
+                        <Button (tap)="selectFilteredView(0, 'MY ITEMS')" [class]="selectedViewIndex === 0 ? 'slide-out-btn-selected' : 'slide-out-btn' "
+                            text="MY ITEMS"></Button>
+
+                        <Button (tap)="selectFilteredView(1, 'OPEN ITEMS')" [class]="selectedViewIndex === 1 ? 'slide-out-btn-selected' : 'slide-out-btn' "
+                            text="OPEN ITEMS"></Button>
+
+                        <Button (tap)="selectFilteredView(2, 'FINISHED ITEMS')" [class]="selectedViewIndex === 2 ? 'slide-out-btn-selected' : 'slide-out-btn' "
+                            text="FINISHED ITEMS"></Button>
+                    </StackLayout>
+                    <StackLayout row="2">
+                        <Button (tap)="logoutTap()" text="LOGOUT" class="slide-out-btn"></Button>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.drawerContent>
+
+        <nsDrawer:RadSideDrawer.mainContent>
+            <StackLayout>
+                <GridLayout class="backlog-container" rows="*, 60">
+
+                    <GridLayout row="0" class="list-container">
+                        <pt-item-list:pt-item-list/>
+                    </GridLayout>
+
+                    <StackLayout row="1" class="btn-add-wrapper">
+                        <Button text="Add" class="btn-add" tap="{{ showAddItemModal }}"></Button>
+                    </StackLayout>
+
+                </GridLayout>
+            </StackLayout>
+        </nsDrawer:RadSideDrawer.mainContent>
+
+    </nsDrawer:RadSideDrawer>
+</Page>

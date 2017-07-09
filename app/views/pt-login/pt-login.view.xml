@@ -1,0 +1,16 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+
+    <GridLayout>
+
+        <StackLayout>
+            <TextField hint="Username"></TextField>
+            <TextField hint="Password"></TextField>
+
+            <StackLayout class="btn-login-wrapper">
+                    <Button text="SIGN IN" class="btn-login" tap="{{ login }}"></Button>
+            </StackLayout>
+        </StackLayout>
+
+    </GridLayout>
+
+</Page>

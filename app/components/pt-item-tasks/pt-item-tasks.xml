@@ -1,0 +1,45 @@
+<StackLayout loaded="onLoaded">
+<Label text="HJAHA1"></Label>
+<Label text="{{ myLabelText }}"></Label>
+    <StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout class="form-group">
+                    <StackLayout class="input-field" height="{{ taskHeight(newTaskTitle) }}">
+                        <GridLayout columns="40, *, 70">
+                            <StackLayout col="0"></StackLayout>
+                            <StackLayout col="1" class="task-new-text-wrapper">
+                                <TextView  text="{{ newTaskTitle }}" hint="Enter new task..." class="input"></TextView>
+                            </StackLayout>
+                            <Button col="2" class="btn-task-add" class.enabled="{{ newTaskTitle.length > 0 }}" isEnabled="{{ newTaskTitle.length > 0 }}"
+                                text="add" tap="{{ addTapped }}"></Button>
+                        </GridLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout class="form-group">
+                    <ListView items="{{ item.tasks }}">
+                        <ListView.itemTemplate>
+                            <StackLayout class="input-field input-field-border" height="{{ $parent.taskHeight($value) }}">
+                                <Label [text]="i"></Label>
+                                <GridLayout columns="40, *">
+
+                                    <GridLayout col="0" tap="{{ $parent.toggleTapped($value) }}">
+                                        <Image src="{{ completed ? 'res://checkbox_checked' : 'res://checkbox_unchecked' }}" class="task-checkbox"></Image>
+                                    </GridLayout>
+
+                                    <StackLayout col="1">
+                                        <TextView text="{{ title }}" class="input"></TextView>
+                                    </StackLayout>
+
+                                </GridLayout>
+                            </StackLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+
+    </StackLayout>
+</StackLayout>
